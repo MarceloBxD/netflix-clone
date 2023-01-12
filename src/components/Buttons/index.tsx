@@ -1,10 +1,10 @@
-import { Button } from "@chakra-ui/react";
 import React from "react";
+import { Button } from "@chakra-ui/react";
 
 export interface iButtons {
-  title: string;
+  props: React.CSSProperties;
 }
 
-export const Buttons = ({ title }: iButtons) => {
-  return <Button bgColor="rgba(255, 255, 255, 0.8)">{title}</Button>;
+export const Buttons = ({ ...props }) => {
+  return <Button variant="unstyled" {...props}></Button>;
 };

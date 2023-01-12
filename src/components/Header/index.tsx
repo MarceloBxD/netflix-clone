@@ -42,6 +42,7 @@ export const Header = () => {
 
   return (
     <Flex
+      flexDir={screen.width > 1100 ? "row" : "column"}
       w="100%"
       align="center"
       justify="space-between"
@@ -50,10 +51,10 @@ export const Header = () => {
       position="fixed"
       top="0"
       fontSize="14px"
-      bgColor={onTop ? "rgb(0,0,0)" : "transparent"}
+      bgColor={onTop ? "#000" : "transparent"}
       transition={onTop ? "all 0.5s ease" : "all 0.5s ease"}
     >
-      <Flex gap="50px">
+      <Flex flex="1" justify="center" p="10px" gap="50px">
         <Img w="100px" cursor="pointer" src={NetflixLogo} />
         <nav>
           <ul
@@ -99,7 +100,7 @@ export const Header = () => {
           </ul>
         </nav>
       </Flex>
-      <Flex color="#fff" align="center" justify="center">
+      <Flex flex="1" p="7px" color="#fff" align="center" justify="flex-end">
         <nav>
           <ul
             style={{
@@ -112,7 +113,15 @@ export const Header = () => {
             <Button variant="unstyled">
               <SearchIcon onClick={() => setShowInput(!showInput)} />
             </Button>
-            {showInput && <Input placeholder="Títulos, gente e gêneros" />}
+            {showInput && (
+              <Input
+                borderRadius="0.125rem"
+                bgColor="#000"
+                border="1px solid #fff"
+                color="#fff"
+                placeholder="Títulos, gente e gêneros"
+              />
+            )}
             <li style={{ cursor: "pointer" }}>Infantil</li>
             <Button variant="unstyled">
               <BellIcon />
@@ -136,17 +145,18 @@ export const Header = () => {
                   />
                 </Flex>
               </MenuButton>
-              <MenuList w="250px" p="0">
+              <MenuList w="250px" p="5px">
                 {users.map((user: iUser) => (
                   <Flex flexDir="column" key={user.id}>
                     <MenuItem
+                      gap="10px"
                       bgColor="rgba(0,0,0,0.9)"
                       _hover={{
                         textDecoration: "underline",
                       }}
                     >
                       <Avatar size="sm" src="" />
-                      {user.email}
+                      <Text as="p">{user.email}</Text>
                     </MenuItem>
                   </Flex>
                 ))}
