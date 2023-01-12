@@ -52,7 +52,7 @@ export const Header = () => {
       top="0"
       fontSize="14px"
       bgColor={onTop ? "#000" : "transparent"}
-      transition={onTop ? "all 0.5s ease" : "all 0.5s ease"}
+      transition={onTop ? "all 0.5s ease-in-out" : "all 0.5s ease-in-out"}
     >
       <Flex flex="1" justify="center" p="10px" gap="50px">
         <Img w="100px" cursor="pointer" src={NetflixLogo} />
